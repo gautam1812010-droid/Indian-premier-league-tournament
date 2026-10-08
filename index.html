@@ -819,56 +819,201 @@ const DATA = {
     {
       name: "Yuzvendra Chahal",
       team: "PBKS",
-      wkts: 4
+const DATA = {
+
+  teams: [
+    {id:"MI",name:"Mumbai Indians",captain:"TBD"},
+    {id:"PBKS",name:"Punjab Kings",captain:"TBD"},
+    {id:"GT",name:"Gujarat Titans",captain:"Shubman Gill"},
+    {id:"DC",name:"Delhi Capitals",captain:"KL Rahul"},
+    {id:"SRH",name:"Sunrisers Hyderabad",captain:"TBD"},
+    {id:"RR",name:"Rajasthan Royals",captain:"TBD"},
+    {id:"KKR",name:"Kolkata Knight Riders",captain:"TBD"},
+    {id:"LSG",name:"Lucknow Super Giants",captain:"TBD"}
+  ],
+
+
+  matches: [
+
+    {
+      no:1,
+      a:"RR",
+      b:"SRH",
+      status:"completed",
+      winner:"SRH",
+      score:"SRH won by 6 wickets",
+      potm:"Nitish Reddy",
+      detail:"Sooryavanshi 50 • Archer 2 wkts • Nitish Reddy 82 & 2 wkts"
     },
 
     {
-      name: "Jasprit Bumrah",
-      team: "MI",
-      wkts: 3
+      no:2,
+      a:"MI",
+      b:"PBKS",
+      status:"completed",
+      winner:"MI",
+      score:"MI won by 71 runs",
+      potm:"Rohit Sharma",
+      detail:"Rohit Sharma 196 • Tilak Varma 51 • Chahal 4 wkts • Bumrah 3 wkts"
     },
 
     {
-      name: "Deepak Chahar",
-      team: "MI",
-      wkts: 3
+      no:3,
+      a:"DC",
+      b:"GT",
+      status:"completed",
+      winner:"GT",
+      score:"GT won by 133 runs",
+      potm:"Shubman Gill",
+      detail:"GT 265 all out (16.5) • DC 132/2 (20.0) • Shubman Gill 85 (29)"
     },
 
+    {no:4,a:"LSG",b:"KKR",status:"upcoming"},
+    {no:5,a:"MI",b:"RR",status:"upcoming"},
+    {no:6,a:"PBKS",b:"SRH",status:"upcoming"},
+    {no:7,a:"GT",b:"LSG",status:"upcoming"},
+    {no:8,a:"DC",b:"KKR",status:"upcoming"},
+    {no:9,a:"MI",b:"SRH",status:"upcoming"},
+    {no:10,a:"RR",b:"GT",status:"upcoming"},
+    {no:11,a:"PBKS",b:"KKR",status:"upcoming"},
+    {no:12,a:"DC",b:"LSG",status:"upcoming"},
+    {no:13,a:"MI",b:"GT",status:"upcoming"},
+    {no:14,a:"SRH",b:"KKR",status:"upcoming"},
+    {no:15,a:"RR",b:"LSG",status:"upcoming"},
+    {no:16,a:"PBKS",b:"DC",status:"upcoming"},
+    {no:17,a:"MI",b:"KKR",status:"upcoming"},
+    {no:18,a:"GT",b:"SRH",status:"upcoming"},
+    {no:19,a:"PBKS",b:"LSG",status:"upcoming"},
+    {no:20,a:"RR",b:"DC",status:"upcoming"},
+    {no:21,a:"MI",b:"LSG",status:"upcoming"},
+    {no:22,a:"KKR",b:"GT",status:"upcoming"},
+    {no:23,a:"SRH",b:"DC",status:"upcoming"},
+    {no:24,a:"PBKS",b:"RR",status:"upcoming"},
+    {no:25,a:"MI",b:"DC",status:"upcoming"},
+    {no:26,a:"LSG",b:"SRH",status:"upcoming"},
+    {no:27,a:"KKR",b:"RR",status:"upcoming"},
+    {no:28,a:"PBKS",b:"GT",status:"upcoming"}
+
+  ],
+
+
+  /* MATCH SCORE DATA */
+
+  innings: [
+
+    /* Match 3 - GT innings */
     {
-      name: "Archer",
-      team: "RR",
-      wkts: 2
+      match:3,
+      team:"GT",
+      runs:265,
+      overs:"16.5"
     },
 
+    /* Match 3 - DC innings */
     {
-      name: "Nitish Reddy",
-      team: "SRH",
-      wkts: 2
-    },
-
-    {
-      name: "Trent Boult",
-      team: "MI",
-      wkts: 2
+      match:3,
+      team:"DC",
+      runs:132,
+      overs:"20.0"
     }
 
   ],
 
 
-  /* ---------------- PLAYER OF THE MATCH ---------------- */
+  /* ORANGE CAP */
+
+  batting: [
+
+    {name:"Rohit Sharma",team:"MI",runs:196},
+
+    {name:"Shubman Gill",team:"GT",runs:85},
+
+    {name:"Nitish Reddy",team:"SRH",runs:82},
+
+    {name:"Glenn Phillips",team:"GT",runs:73},
+
+    {name:"B. Duckett",team:"DC",runs:67},
+
+    {name:"Tilak Varma",team:"MI",runs:51},
+
+    {name:"Shreyas",team:"PBKS",runs:51},
+
+    {name:"Sooryavanshi",team:"RR",runs:50},
+
+    {name:"R. Khan",team:"GT",runs:47},
+
+    {name:"Nehal Wadhera",team:"PBKS",runs:43},
+
+    {name:"L. Rahul",team:"DC",runs:30},
+
+    {name:"S. Rizvi",team:"DC",runs:26},
+
+    {name:"J. Buttler",team:"GT",runs:21},
+
+    {name:"W. Sundar",team:"GT",runs:19},
+
+    {name:"J. Holder",team:"GT",runs:17},
+
+    {name:"T. Stubbs",team:"DC",runs:7},
+
+    {name:"S. Sudharsan",team:"GT",runs:2}
+
+  ],
+
+
+  /* PURPLE CAP */
+
+  bowling: [
+
+    {name:"Yuzvendra Chahal",team:"PBKS",wkts:4},
+
+    {name:"S. Rizvi",team:"DC",wkts:4},
+
+    {name:"Jasprit Bumrah",team:"MI",wkts:3},
+
+    {name:"Deepak Chahar",team:"MI",wkts:3},
+
+    {name:"Mitchell Starc",team:"DC",wkts:2},
+
+    {name:"Archer",team:"RR",wkts:2},
+
+    {name:"Nitish Reddy",team:"SRH",wkts:2},
+
+    {name:"Trent Boult",team:"MI",wkts:2},
+
+    {name:"R. Tewatia",team:"GT",wkts:1},
+
+    {name:"Mohammed Siraj",team:"GT",wkts:1},
+
+    {name:"A. Sharma",team:"DC",wkts:1},
+
+    {name:"A. Patel",team:"DC",wkts:1},
+
+    {name:"K. Yadav",team:"DC",wkts:1}
+
+  ],
+
+
+  /* PLAYER OF THE MATCH */
 
   potm: [
 
     {
-      match: 2,
-      name: "Rohit Sharma",
-      team: "MI"
+      match:3,
+      name:"Shubman Gill",
+      team:"GT"
     },
 
     {
-      match: 1,
-      name: "Nitish Reddy",
-      team: "SRH"
+      match:2,
+      name:"Rohit Sharma",
+      team:"MI"
+    },
+
+    {
+      match:1,
+      name:"Nitish Reddy",
+      team:"SRH"
     }
 
   ]
