@@ -1,914 +1,2031 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cricket Premier League</title><style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cricket Premier League</title>
+
+<style>
+:root{
+  --navy:#07152f;
+  --navy2:#0c2145;
+  --orange:#ff7a00;
+  --gold:#ffb300;
+  --white:#fff;
+  --muted:#9fb0ca;
+  --card:#10284e;
+  --line:#203b63;
+  --green:#35c878;
+}
+
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#080b12;
-    color:#fff;
+  margin:0;
+  background:#061126;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
 }
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* HEADER */
 
 header{
-    background:linear-gradient(135deg,#ff6b00,#ff9d00);
-    padding:22px 15px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:10;
-    box-shadow:0 4px 20px rgba(0,0,0,.35);
+  background:linear-gradient(135deg,#06122a,#123664 65%,#f06a00);
+  padding:18px 16px 22px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:0 4px 20px #0008;
 }
 
-header h1{
-    font-size:28px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:1100px;
+  margin:auto;
 }
 
-header p{
-    margin-top:5px;
-    opacity:.9;
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  display:grid;
+  place-items:center;
+  font-size:25px;
 }
+
+.brand h1{
+  font-size:19px;
+  margin:0;
+}
+
+.brand p{
+  font-size:11px;
+  color:#dce7f8;
+  margin:3px 0 0;
+}
+
+/* NAVIGATION */
 
 nav{
-    display:flex;
-    overflow-x:auto;
-    background:#111620;
-    border-bottom:1px solid #272d38;
+  max-width:1100px;
+  margin:17px auto 0;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding-bottom:2px;
 }
 
 nav button{
-    flex:0 0 auto;
-    background:none;
-    border:0;
-    color:#bbb;
-    padding:15px 17px;
-    font-size:14px;
-    cursor:pointer;
+  border:1px solid #ffffff25;
+  background:#ffffff0d;
+  color:#dce7f8;
+  padding:9px 13px;
+  border-radius:20px;
+  white-space:nowrap;
+  font-weight:700;
 }
 
-nav button.active,
-nav button:hover{
-    color:#ff8a00;
+nav button.active{
+  background:var(--orange);
+  color:#fff;
+  border-color:transparent;
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:18px;
+/* MAIN */
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:18px 14px 50px;
 }
 
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.card{
-    background:#111620;
-    border:1px solid #252c38;
-    border-radius:15px;
-    padding:18px;
-    margin-bottom:16px;
-}
-
-.card h2{
-    margin-bottom:14px;
-    color:#ff9a00;
-}
+/* HERO */
 
 .hero{
-    background:linear-gradient(135deg,#161d29,#10141c);
-    border-radius:18px;
-    padding:28px 20px;
-    text-align:center;
-    margin-bottom:18px;
-    border:1px solid #2a313d;
+  background:linear-gradient(135deg,#102b54,#091a38);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"🏏";
+  position:absolute;
+  right:18px;
+  bottom:-12px;
+  font-size:100px;
+  opacity:.08;
+}
+
+.eyebrow{
+  color:#ffae45;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:1.5px;
 }
 
 .hero h2{
-    font-size:28px;
+  font-size:30px;
+  margin:7px 0;
 }
 
 .hero p{
-    color:#aaa;
-    margin-top:8px;
+  color:var(--muted);
+  margin:0;
+  max-width:600px;
 }
 
+/* STAT CARDS */
+
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:14px 0;
+}
+
+.stat,
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
 }
 
 .stat{
-    background:#111620;
-    border:1px solid #252c38;
-    border-radius:14px;
-    padding:18px;
+  padding:15px;
 }
 
-.stat h3{
-    color:#aaa;
-    font-size:13px;
-    margin-bottom:8px;
+.stat b{
+  font-size:25px;
 }
 
-.stat strong{
-    font-size:24px;
+.stat span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:600px;
+/* SECTIONS */
+
+.section{
+  margin-top:22px;
 }
 
-.table-wrap{
-    overflow-x:auto;
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
 }
 
-th,td{
-    padding:12px 10px;
-    text-align:center;
-    border-bottom:1px solid #252c38;
+.section h3{
+  margin:0;
+  font-size:20px;
 }
 
-th{
-    color:#ff9a00;
-    font-size:13px;
+.section-head small{
+  color:#8fa4c2;
 }
 
-td{
-    font-size:14px;
-}
+/* MATCH CARDS */
 
-.team-name{
-    text-align:left;
-    font-weight:bold;
-}
-
-.badge{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:20px;
-    background:#222a36;
-    color:#ddd;
-    font-size:12px;
-}
-
-.win{
-    color:#55e391;
-}
-
-.loss{
-    color:#ff6868;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
 .match{
-    border-left:4px solid #ff8700;
+  padding:15px;
 }
 
-.match-title{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    flex-wrap:wrap;
+.matchtop{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.teams{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+  margin:14px 0;
+}
+
+.team{
+  width:42%;
+  font-weight:800;
+}
+
+.badge{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:auto;
+  background:#173762;
+  border:1px solid #315684;
+  font-weight:900;
 }
 
 .result{
-    margin-top:12px;
-    font-weight:bold;
+  font-size:11px;
+  color:var(--green);
+  font-weight:800;
+  margin-top:5px;
 }
 
-.potm{
-    margin-top:8px;
-    color:#ffb12b;
+.upcoming{
+  color:#ffb55c;
 }
 
-.team-card{
-    cursor:pointer;
-    transition:.2s;
+.pill{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:12px;
+  background:#ffffff0d;
+  color:#a9bbd4;
+  font-size:10px;
+  font-weight:700;
 }
 
-.team-card:hover{
-    transform:translateY(-3px);
-    border-color:#ff8700;
+/* TABLE */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  font-size:12px;
 }
 
-.team-logo{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:12px;
-    background:#222a36;
-    font-size:20px;
-    font-weight:bold;
+th,
+td{
+  padding:11px 8px;
+  border-bottom:1px solid #ffffff0a;
+  text-align:center;
 }
 
-.cap{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:#171e29;
-    padding:14px;
-    border-radius:12px;
-    margin-bottom:9px;
+th{
+  color:#9fb0ca;
+  background:#0b2040;
 }
 
-.cap-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
+td:first-child,
+th:first-child{
+  text-align:left;
 }
 
 .rank{
-    width:28px;
-    height:28px;
-    border-radius:50%;
-    background:#292f3a;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:bold;
+  font-weight:900;
+  color:#ffb14b;
+}
+
+.qualified{
+  border-left:3px solid var(--green);
+}
+
+/* PLAYERS */
+
+.playerrow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 15px;
+  border-bottom:1px solid #ffffff0a;
+}
+
+.playerrow:last-child{
+  border:0;
+}
+
+.playername{
+  font-weight:800;
+}
+
+.playerteam{
+  font-size:11px;
+  color:var(--muted);
 }
 
 .number{
-    font-weight:bold;
-    color:#ff9a00;
+  font-size:22px;
+  font-weight:900;
+  color:#ffae45;
 }
-
-footer{
-    text-align:center;
-    color:#777;
-    padding:30px 10px;
-    font-size:13px;
-}
-
-@media(max-width:600px){
-    header h1{
-        font-size:23px;
-    }
-
-    .container{
-        padding:12px;
-    }
-
-    .hero h2{
-        font-size:23px;
-    }
-
-    .stat strong{
-        font-size:20px;
-    }
-}
-</style></head><body><header>
-    <h1>🏏 CRICKET PREMIER LEAGUE</h1>
-    <p>8 Teams • 28 Matches • 1 Champion</p>
-</header><nav>
-    <button class="active" onclick="showPage('home',this)">Home</button>
-    <button onclick="showPage('matches',this)">Matches</button>
-    <button onclick="showPage('points',this)">Points Table</button>
-    <button onclick="showPage('teams',this)">Teams</button>
-    <button onclick="showPage('stats',this)">Stats</button>
-    <button onclick="showPage('playoffs',this)">Playoffs</button>
-</nav><div class="container"><!-- HOME --><section id="home" class="page active"><div class="hero">
-    <h2>🏆 Cricket Premier League</h2>
-    <p>Follow the tournament from Match 1 to the Final.</p>
-</div><div class="grid"><div class="stat">
-    <h3>MATCHES PLAYED</h3>
-    <strong id="playedHome">2 / 28</strong>
-</div><div class="stat">
-    <h3>ORANGE CAP</h3>
-    <strong>Rohit Sharma</strong>
-    <p>196 Runs</p>
-</div><div class="stat">
-    <h3>PURPLE CAP</h3>
-    <strong>Yuzvendra Chahal</strong>
-    <p>4 Wickets</p>
-</div><div class="stat">
-    <h3>TOP TEAM</h3>
-    <strong>MI / SRH</strong>
-    <p>2 Points</p>
-</div></div><div class="card" style="margin-top:18px;">
-<h2>🔥 Latest Results</h2><p><b>Match 2:</b> Mumbai Indians defeated Punjab Kings by 71 runs.</p>
-<p style="margin-top:8px;">⭐ POTM: Rohit Sharma — 196 runs</p><hr style="border-color:#252c38;margin:15px 0;"><p><b>Match 1:</b> Sunrisers Hyderabad defeated Rajasthan Royals by 6 wickets.</p>
-<p style="margin-top:8px;">⭐ POTM: Nitish Reddy — 82 runs & 2 wickets</p>
-</div></section><!-- MATCHES --><section id="matches" class="page"><div class="card">
-<h2>📅 Tournament Matches</h2><div id="matchList"></div></div></section><!-- POINTS --><section id="points" class="page"><div class="card">
-<h2>📊 Points Table</h2><div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>POS</th>
-<th>TEAM</th>
-<th>P</th>
-<th>W</th>
-<th>L</th>
-<th>NR</th>
-<th>PTS</th>
-<th>NRR</th>
-</tr>
-</thead><tbody id="pointsTable"></tbody></table>
-</div></div></section><!-- TEAMS --><section id="teams" class="page"><div class="card">
-<h2>🏏 Teams</h2><div class="grid" id="teamGrid"></div></div></section><!-- STATS --><section id="stats" class="page"><div class="card">
-<h2>🟠 Orange Cap — Top Run Scorers</h2>
-<div id="orangeCap"></div>
-</div><div class="card">
-<h2>🟣 Purple Cap — Top Wicket Takers</h2>
-<div id="purpleCap"></div>
-</div><div class="card">
-<h2>⭐ Player of the Match Awards</h2>
-<div id="potmList"></div>
-</div></section><!-- PLAYOFFS --><section id="playoffs" class="page"><div class="card">
-<h2>🏆 Playoffs</h2><div class="match">
-<h3>Qualifier 1</h3>
-<p>1st Place 🆚 2nd Place</p>
-<p style="color:#888;margin-top:7px;">Winner → Final</p>
-<p style="color:#888;">Loser → Qualifier 2</p>
-</div><div class="match">
-<h3>Eliminator</h3>
-<p>3rd Place 🆚 4th Place</p>
-<p style="color:#888;margin-top:7px;">Winner → Qualifier 2</p>
-<p style="color:#888;">Loser → Eliminated</p>
-</div><div class="match">
-<h3>Qualifier 2</h3>
-<p>Loser Q1 🆚 Winner Eliminator</p>
-<p style="color:#888;margin-top:7px;">Winner → Final</p>
-</div><div class="match">
-<h3>🏆 FINAL</h3>
-<p>Winner Q1 🆚 Winner Q2</p>
-<p style="color:#ffb12b;margin-top:10px;font-weight:bold;">
-CHAMPION: TBD
-</p>
-</div></div></section></div><footer>
-Cricket Premier League • Tournament Website
-</footer><script>
-
-/* =====================================================
-   TOURNAMENT DATA
-   UPDATE THIS SECTION AFTER EACH MATCH
-===================================================== */
-
-const teams = [
-    {
-        name:"Mumbai Indians",
-        short:"MI",
-        captain:"TBD"
-    },
-    {
-        name:"Punjab Kings",
-        short:"PBKS",
-        captain:"TBD"
-    },
-    {
-        name:"Gujarat Titans",
-        short:"GT",
-        captain:"TBD"
-    },
-    {
-        name:"Delhi Capitals",
-        short:"DC",
-        captain:"TBD"
-    },
-    {
-        name:"Sunrisers Hyderabad",
-        short:"SRH",
-        captain:"TBD"
-    },
-    {
-        name:"Rajasthan Royals",
-        short:"RR",
-        captain:"TBD"
-    },
-    {
-        name:"Kolkata Knight Riders",
-        short:"KKR",
-        captain:"TBD"
-    },
-    {
-        name:"Lucknow Super Giants",
-        short:"LSG",
-        captain:"TBD"
-    }
-];
-
-
-/* MATCHES */
-
-const matches = [
-
-{
-    no:1,
-    team1:"Rajasthan Royals",
-    team2:"Sunrisers Hyderabad",
-    status:"completed",
-    result:"SRH won by 6 wickets",
-    potm:"Nitish Reddy",
-    details:"Sooryavanshi 50 runs • Archer 2 wickets • Nitish Reddy 82 runs & 2 wickets"
-},
-
-{
-    no:2,
-    team1:"Mumbai Indians",
-    team2:"Punjab Kings",
-    status:"completed",
-    result:"MI won by 71 runs",
-    potm:"Rohit Sharma",
-    details:"Rohit Sharma 196 runs • Tilak Varma 51 • Bumrah 3/25 • Deepak Chahar 3/52 • Trent Boult 2/34 • Shreyas 51 • Chahal 4 wickets • Nehal Wadhera 43"
-},
-
-{
-    no:3,
-    team1:"Delhi Capitals",
-    team2:"Gujarat Titans",
-    status:"upcoming"
-},
-
-{
-    no:4,
-    team1:"Lucknow Super Giants",
-    team2:"Kolkata Knight Riders",
-    status:"upcoming"
-},
-
-{
-    no:5,
-    team1:"Mumbai Indians",
-    team2:"Rajasthan Royals",
-    status:"upcoming"
-},
-
-{
-    no:6,
-    team1:"Punjab Kings",
-    team2:"Sunrisers Hyderabad",
-    status:"upcoming"
-},
-
-{
-    no:7,
-    team1:"Gujarat Titans",
-    team2:"Lucknow Super Giants",
-    status:"upcoming"
-},
-
-{
-    no:8,
-    team1:"Delhi Capitals",
-    team2:"Kolkata Knight Riders",
-    status:"upcoming"
-},
-
-{
-    no:9,
-    team1:"Mumbai Indians",
-    team2:"Sunrisers Hyderabad",
-    status:"upcoming"
-},
-
-{
-    no:10,
-    team1:"Rajasthan Royals",
-    team2:"Gujarat Titans",
-    status:"upcoming"
-},
-
-{
-    no:11,
-    team1:"Punjab Kings",
-    team2:"Kolkata Knight Riders",
-    status:"upcoming"
-},
-
-{
-    no:12,
-    team1:"Delhi Capitals",
-    team2:"Lucknow Super Giants",
-    status:"upcoming"
-},
-
-{
-    no:13,
-    team1:"Mumbai Indians",
-    team2:"Gujarat Titans",
-    status:"upcoming"
-},
-
-{
-    no:14,
-    team1:"Sunrisers Hyderabad",
-    team2:"Kolkata Knight Riders",
-    status:"upcoming"
-},
-
-{
-    no:15,
-    team1:"Rajasthan Royals",
-    team2:"Lucknow Super Giants",
-    status:"upcoming"
-},
-
-{
-    no:16,
-    team1:"Punjab Kings",
-    team2:"Delhi Capitals",
-    status:"upcoming"
-},
-
-{
-    no:17,
-    team1:"Mumbai Indians",
-    team2:"Kolkata Knight Riders",
-    status:"upcoming"
-},
-
-{
-    no:18,
-    team1:"Gujarat Titans",
-    team2:"Sunrisers Hyderabad",
-    status:"upcoming"
-},
-
-{
-    no:19,
-    team1:"Punjab Kings",
-    team2:"Lucknow Super Giants",
-    status:"upcoming"
-},
-
-{
-    no:20,
-    team1:"Rajasthan Royals",
-    team2:"Delhi Capitals",
-    status:"upcoming"
-},
-
-{
-    no:21,
-    team1:"Mumbai Indians",
-    team2:"Lucknow Super Giants",
-    status:"upcoming"
-},
-
-{
-    no:22,
-    team1:"Kolkata Knight Riders",
-    team2:"Gujarat Titans",
-    status:"upcoming"
-},
-
-{
-    no:23,
-    team1:"Sunrisers Hyderabad",
-    team2:"Delhi Capitals",
-    status:"upcoming"
-},
-
-{
-    no:24,
-    team1:"Punjab Kings",
-    team2:"Rajasthan Royals",
-    status:"upcoming"
-},
-
-{
-    no:25,
-    team1:"Mumbai Indians",
-    team2:"Delhi Capitals",
-    status:"upcoming"
-},
-
-{
-    no:26,
-    team1:"Lucknow Super Giants",
-    team2:"Sunrisers Hyderabad",
-    status:"upcoming"
-},
-
-{
-    no:27,
-    team1:"Kolkata Knight Riders",
-    team2:"Rajasthan Royals",
-    status:"upcoming"
-},
-
-{
-    no:28,
-    team1:"Punjab Kings",
-    team2:"Gujarat Titans",
-    status:"upcoming"
-}
-
-];
-
-
-/* POINTS TABLE */
-
-const points = {
-
-"MI": {p:1,w:1,l:0,nr:0,pts:2,nrr:"+"},
-"SRH": {p:1,w:1,l:0,nr:0,pts:2,nrr:"+"},
-"RR": {p:1,w:0,l:1,nr:0,pts:0,nrr:""},
-"PBKS": {p:1,w:0,l:1,nr:0,pts:0,nrr:""},
-"GT": {p:0,w:0,l:0,nr:0,pts:0,nrr:""},
-"DC": {p:0,w:0,l:0,nr:0,pts:0,nrr:""},
-"LSG": {p:0,w:0,l:0,nr:0,pts:0,nrr:""},
-"KKR": {p:0,w:0,l:0,nr:0,pts:0,nrr:""}
-
-};
-
-
-/* ORANGE CAP */
-
-const orangeCap = [
-    {name:"Rohit Sharma",team:"MI",runs:196},
-    {name:"Nitish Reddy",team:"SRH",runs:82},
-    {name:"Tilak Varma",team:"MI",runs:51},
-    {name:"Shreyas",team:"PBKS",runs:51},
-    {name:"Sooryavanshi",team:"RR",runs:50},
-    {name:"Nehal Wadhera",team:"PBKS",runs:43}
-];
-
-
-/* PURPLE CAP */
-
-const purpleCap = [
-    {name:"Yuzvendra Chahal",team:"PBKS",wickets:4},
-    {name:"Jasprit Bumrah",team:"MI",wickets:3},
-    {name:"Deepak Chahar",team:"MI",wickets:3},
-    {name:"Archer",team:"RR",wickets:2},
-    {name:"Nitish Reddy",team:"SRH",wickets:2},
-    {name:"Trent Boult",team:"MI",wickets:2}
-];
-
-
-/* PLAYER OF THE MATCH */
-
-const potm = [
-    {match:2,name:"Rohit Sharma",team:"MI"},
-    {match:1,name:"Nitish Reddy",team:"SRH"}
-];
-
-
-/* =====================================================
-   WEBSITE FUNCTIONS
-===================================================== */
-
-function showPage(page,button){
-
-    document.querySelectorAll(".page").forEach(p=>{
-        p.classList.remove("active");
-    });
-
-    document.getElementById(page).classList.add("active");
-
-    document.querySelectorAll("nav button").forEach(b=>{
-        b.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    window.scrollTo(0,0);
-}
-
-
-/* MATCH LIST */
-
-function renderMatches(){
-
-    const box=document.getElementById("matchList");
-
-    box.innerHTML="";
-
-    matches.forEach(m=>{
-
-        let html=`
-        <div class="card match">
-
-            <div class="match-title">
-                <b>Match ${m.no}</b>
-                <span class="badge">
-                    ${m.status==="completed" ? "COMPLETED" : "UPCOMING"}
-                </span>
-            </div>
-
-            <h3 style="margin-top:10px;">
-                ${m.team1} 🆚 ${m.team2}
-            </h3>
-        `;
-
-        if(m.status==="completed"){
-
-            html+=`
-                <div class="result">${m.result}</div>
-                <div class="potm">⭐ POTM: ${m.potm}</div>
-                <p style="margin-top:10px;color:#aaa;font-size:13px;">
-                    ${m.details}
-                </p>
-            `;
-
-        }else{
-
-            html+=`
-                <p style="margin-top:10px;color:#777;">
-                    Match not played yet
-                </p>
-            `;
-        }
-
-        html+=`</div>`;
-
-        box.innerHTML+=html;
-    });
-}
-
-
-/* POINTS TABLE */
-
-function renderPoints(){
-
-    const tbody=document.getElementById("pointsTable");
-
-    const order=[
-        ["MI","Mumbai Indians"],
-        ["SRH","Sunrisers Hyderabad"],
-        ["RR","Rajasthan Royals"],
-        ["PBKS","Punjab Kings"],
-        ["GT","Gujarat Titans"],
-        ["DC","Delhi Capitals"],
-        ["LSG","Lucknow Super Giants"],
-        ["KKR","Kolkata Knight Riders"]
-    ];
-
-    tbody.innerHTML="";
-
-    order.forEach((team,i)=>{
-
-        const d=points[team[0]];
-
-        tbody.innerHTML+=`
-        <tr>
-            <td>${i+1}</td>
-            <td class="team-name">${team[1]}</td>
-            <td>${d.p}</td>
-            <td class="win">${d.w}</td>
-            <td class="loss">${d.l}</td>
-            <td>${d.nr}</td>
-            <td><b>${d.pts}</b></td>
-            <td>${d.nrr}</td>
-        </tr>
-        `;
-    });
-}
-
 
 /* TEAMS */
 
-function renderTeams(){
+.teamgrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
 
-    const grid=document.getElementById("teamGrid");
+.teamcard{
+  padding:18px;
+  text-align:center;
+}
 
-    grid.innerHTML="";
+.teamlogo{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#183963,#0a1934);
+  display:grid;
+  place-items:center;
+  margin:0 auto 10px;
+  font-size:18px;
+  font-weight:900;
+  border:1px solid #315684;
+}
 
-    teams.forEach(t=>{
+.teamcard p{
+  margin:4px 0;
+  color:var(--muted);
+  font-size:12px;
+}
 
-        grid.innerHTML+=`
-        <div class="stat team-card">
+/* PLAYOFFS */
 
-            <div class="team-logo">
-                ${t.short}
-            </div>
+.bracket{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  align-items:center;
+}
 
-            <h3>${t.name}</h3>
+.round h4{
+  text-align:center;
+  color:#ffae45;
+}
 
-            <p style="color:#888;margin-top:7px;">
-                Captain: ${t.captain}
-            </p>
+.game{
+  padding:12px;
+  margin:12px 0;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:13px;
+  font-size:12px;
+}
 
-        </div>
-        `;
-    });
+.game div{
+  padding:5px 0;
+  border-bottom:1px solid #ffffff0a;
+}
+
+.game div:last-child{
+  border:0;
+}
+
+.hidden{
+  display:none;
+}
+
+.empty{
+  padding:28px;
+  text-align:center;
+  color:var(--muted);
+  background:var(--card);
+  border-radius:16px;
+  border:1px solid var(--line);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .teamgrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .bracket{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h2{
+    font-size:25px;
+  }
+
+  table{
+    font-size:11px;
+  }
+
+  th,
+  td{
+    padding:9px 5px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">🏏</div>
+
+    <div>
+      <h1>CRICKET PREMIER LEAGUE</h1>
+      <p>8 Teams • 28 Matches • 1 Champion</p>
+    </div>
+  </div>
+
+  <nav id="nav"></nav>
+</header>
+
+<main id="app"></main>
+
+<script>
+
+/* ============================================================
+   TOURNAMENT DATA
+   ============================================================
+
+   IMPORTANT:
+   After every match, this is the main section that will be
+   updated.
+
+   You can send the scorecard screenshots to ChatGPT and
+   ChatGPT can prepare the updated data for you.
+
+   ============================================================ */
+
+const DATA = {
+
+  /* ---------------- TEAMS ---------------- */
+
+  teams: [
+
+    {
+      id: "MI",
+      name: "Mumbai Indians",
+      captain: "TBD"
+    },
+
+    {
+      id: "PBKS",
+      name: "Punjab Kings",
+      captain: "TBD"
+    },
+
+    {
+      id: "GT",
+      name: "Gujarat Titans",
+      captain: "TBD"
+    },
+
+    {
+      id: "DC",
+      name: "Delhi Capitals",
+      captain: "TBD"
+    },
+
+    {
+      id: "SRH",
+      name: "Sunrisers Hyderabad",
+      captain: "TBD"
+    },
+
+    {
+      id: "RR",
+      name: "Rajasthan Royals",
+      captain: "TBD"
+    },
+
+    {
+      id: "KKR",
+      name: "Kolkata Knight Riders",
+      captain: "TBD"
+    },
+
+    {
+      id: "LSG",
+      name: "Lucknow Super Giants",
+      captain: "TBD"
+    }
+
+  ],
+
+
+  /* ---------------- MATCHES ---------------- */
+
+  matches: [
+
+    {
+      no: 1,
+      a: "RR",
+      b: "SRH",
+      status: "completed",
+      winner: "SRH",
+      score: "SRH won by 6 wickets",
+      potm: "Nitish Reddy",
+      detail:
+        "Sooryavanshi 50 • Archer 2 wkts • Nitish Reddy 82 & 2 wkts"
+    },
+
+    {
+      no: 2,
+      a: "MI",
+      b: "PBKS",
+      status: "completed",
+      winner: "MI",
+      score: "MI won by 71 runs",
+      potm: "Rohit Sharma",
+      detail:
+        "Rohit Sharma 196 • Tilak Varma 51 • Chahal 4 wkts • Bumrah 3 wkts"
+    },
+
+    {
+      no: 3,
+      a: "DC",
+      b: "GT",
+      status: "upcoming"
+    },
+
+    {
+      no: 4,
+      a: "LSG",
+      b: "KKR",
+      status: "upcoming"
+    },
+
+    {
+      no: 5,
+      a: "MI",
+      b: "RR",
+      status: "upcoming"
+    },
+
+    {
+      no: 6,
+      a: "PBKS",
+      b: "SRH",
+      status: "upcoming"
+    },
+
+    {
+      no: 7,
+      a: "GT",
+      b: "LSG",
+      status: "upcoming"
+    },
+
+    {
+      no: 8,
+      a: "DC",
+      b: "KKR",
+      status: "upcoming"
+    },
+
+    {
+      no: 9,
+      a: "MI",
+      b: "SRH",
+      status: "upcoming"
+    },
+
+    {
+      no: 10,
+      a: "RR",
+      b: "GT",
+      status: "upcoming"
+    },
+
+    {
+      no: 11,
+      a: "PBKS",
+      b: "KKR",
+      status: "upcoming"
+    },
+
+    {
+      no: 12,
+      a: "DC",
+      b: "LSG",
+      status: "upcoming"
+    },
+
+    {
+      no: 13,
+      a: "MI",
+      b: "GT",
+      status: "upcoming"
+    },
+
+    {
+      no: 14,
+      a: "SRH",
+      b: "KKR",
+      status: "upcoming"
+    },
+
+    {
+      no: 15,
+      a: "RR",
+      b: "LSG",
+      status: "upcoming"
+    },
+
+    {
+      no: 16,
+      a: "PBKS",
+      b: "DC",
+      status: "upcoming"
+    },
+
+    {
+      no: 17,
+      a: "MI",
+      b: "KKR",
+      status: "upcoming"
+    },
+
+    {
+      no: 18,
+      a: "GT",
+      b: "SRH",
+      status: "upcoming"
+    },
+
+    {
+      no: 19,
+      a: "PBKS",
+      b: "LSG",
+      status: "upcoming"
+    },
+
+    {
+      no: 20,
+      a: "RR",
+      b: "DC",
+      status: "upcoming"
+    },
+
+    {
+      no: 21,
+      a: "MI",
+      b: "LSG",
+      status: "upcoming"
+    },
+
+    {
+      no: 22,
+      a: "KKR",
+      b: "GT",
+      status: "upcoming"
+    },
+
+    {
+      no: 23,
+      a: "SRH",
+      b: "DC",
+      status: "upcoming"
+    },
+
+    {
+      no: 24,
+      a: "PBKS",
+      b: "RR",
+      status: "upcoming"
+    },
+
+    {
+      no: 25,
+      a: "MI",
+      b: "DC",
+      status: "upcoming"
+    },
+
+    {
+      no: 26,
+      a: "LSG",
+      b: "SRH",
+      status: "upcoming"
+    },
+
+    {
+      no: 27,
+      a: "KKR",
+      b: "RR",
+      status: "upcoming"
+    },
+
+    {
+      no: 28,
+      a: "PBKS",
+      b: "GT",
+      status: "upcoming"
+    }
+
+  ],
+
+
+  /* ---------------- INNINGS DATA ---------------- */
+
+  /*
+     This is used for NRR.
+
+     Example:
+
+     {
+       match: 3,
+       team: "DC",
+       runs: 180,
+       overs: 20
+     }
+
+     Once you give me a scorecard, I can add this
+     automatically.
+
+     DO NOT add guesses here.
+  */
+
+  innings: [],
+
+
+  /* ---------------- ORANGE CAP ---------------- */
+
+  batting: [
+
+    {
+      name: "Rohit Sharma",
+      team: "MI",
+      runs: 196
+    },
+
+    {
+      name: "Nitish Reddy",
+      team: "SRH",
+      runs: 82
+    },
+
+    {
+      name: "Tilak Varma",
+      team: "MI",
+      runs: 51
+    },
+
+    {
+      name: "Shreyas",
+      team: "PBKS",
+      runs: 51
+    },
+
+    {
+      name: "Sooryavanshi",
+      team: "RR",
+      runs: 50
+    },
+
+    {
+      name: "Nehal Wadhera",
+      team: "PBKS",
+      runs: 43
+    }
+
+  ],
+
+
+  /* ---------------- PURPLE CAP ---------------- */
+
+  bowling: [
+
+    {
+      name: "Yuzvendra Chahal",
+      team: "PBKS",
+      wkts: 4
+    },
+
+    {
+      name: "Jasprit Bumrah",
+      team: "MI",
+      wkts: 3
+    },
+
+    {
+      name: "Deepak Chahar",
+      team: "MI",
+      wkts: 3
+    },
+
+    {
+      name: "Archer",
+      team: "RR",
+      wkts: 2
+    },
+
+    {
+      name: "Nitish Reddy",
+      team: "SRH",
+      wkts: 2
+    },
+
+    {
+      name: "Trent Boult",
+      team: "MI",
+      wkts: 2
+    }
+
+  ],
+
+
+  /* ---------------- PLAYER OF THE MATCH ---------------- */
+
+  potm: [
+
+    {
+      match: 2,
+      name: "Rohit Sharma",
+      team: "MI"
+    },
+
+    {
+      match: 1,
+      name: "Nitish Reddy",
+      team: "SRH"
+    }
+
+  ]
+
+};
+
+/* ============================================================
+   END OF TOURNAMENT DATA
+   ============================================================ */
+    const teamMap = Object.fromEntries(
+  DATA.teams.map(t => [t.id, t])
+);
+
+const $ = id => document.getElementById(id);
+
+function team(id){
+  return teamMap[id] || {name:id};
 }
 
 
-/* ORANGE CAP */
+/* =========================
+   NRR CALCULATION
+========================= */
 
-function renderOrange(){
+function oversToBalls(overs){
 
-    const box=document.getElementById("orangeCap");
+  if(!overs) return 0;
 
-    box.innerHTML="";
+  const parts = String(overs).split(".");
 
-    orangeCap.sort((a,b)=>b.runs-a.runs);
-
-    orangeCap.forEach((p,i)=>{
-
-        box.innerHTML+=`
-        <div class="cap">
-
-            <div class="cap-left">
-                <div class="rank">${i+1}</div>
-
-                <div>
-                    <b>${p.name}</b>
-                    <p style="color:#777;font-size:12px;">
-                        ${p.team}
-                    </p>
-                </div>
-            </div>
-
-            <div class="number">
-                ${p.runs} runs
-            </div>
-
-        </div>
-        `;
-    });
+  return (
+    Number(parts[0]) * 6 +
+    Number(parts[1] || 0)
+  );
 }
 
 
-/* PURPLE CAP */
+function calculateTable(){
 
-function renderPurple(){
+  const table = Object.fromEntries(
 
-    const box=document.getElementById("purpleCap");
+    DATA.teams.map(t => [
 
-    box.innerHTML="";
+      t.id,
 
-    purpleCap.sort((a,b)=>b.wickets-a.wickets);
+      {
+        ...t,
+        p:0,
+        w:0,
+        l:0,
+        nr:0,
+        pts:0,
 
-    purpleCap.forEach((p,i)=>{
+        nrr:null,
 
-        box.innerHTML+=`
-        <div class="cap">
+        forRuns:0,
+        forBalls:0,
 
-            <div class="cap-left">
-                <div class="rank">${i+1}</div>
+        againstRuns:0,
+        againstBalls:0
+      }
 
-                <div>
-                    <b>${p.name}</b>
-                    <p style="color:#777;font-size:12px;">
-                        ${p.team}
-                    </p>
-                </div>
-            </div>
+    ])
 
-            <div class="number">
-                ${p.wickets} wkts
-            </div>
+  );
 
-        </div>
-        `;
+
+  /* RESULTS */
+
+  DATA.matches
+
+    .filter(m => m.status === "completed")
+
+    .forEach(m => {
+
+      if(!m.winner) return;
+
+      table[m.winner].p++;
+      table[m.winner].w++;
+      table[m.winner].pts += 2;
+
+      const loser =
+        m.a === m.winner
+          ? m.b
+          : m.a;
+
+      table[loser].p++;
+      table[loser].l++;
+
     });
+
+
+  /* INNINGS */
+
+  DATA.innings.forEach(x => {
+
+    if(!table[x.team]) return;
+
+    table[x.team].forRuns += x.runs;
+
+    table[x.team].forBalls +=
+      oversToBalls(x.overs);
+
+  });
+
+
+  /* OPPONENT INNINGS */
+
+  DATA.innings.forEach(x => {
+
+    const match =
+      DATA.matches.find(m => m.no === x.match);
+
+    if(!match) return;
+
+    const opponent =
+      match.a === x.team
+        ? match.b
+        : match.a;
+
+    if(!table[opponent]) return;
+
+    table[x.team].againstRuns += x.runs;
+
+    table[opponent].againstRuns += x.runs;
+
+    table[opponent].againstBalls +=
+      oversToBalls(x.overs);
+
+  });
+
+
+  /* NRR */
+
+  Object.values(table).forEach(x => {
+
+    if(
+      x.forBalls &&
+      x.againstBalls
+    ){
+
+      x.nrr =
+        (x.forRuns / x.forBalls * 6) -
+        (x.againstRuns / x.againstBalls * 6);
+
+    }
+
+  });
+
+
+  /* SORT */
+
+  return Object.values(table).sort(
+
+    (a,b) =>
+
+      b.pts - a.pts ||
+
+      (b.nrr ?? -999) -
+      (a.nrr ?? -999)
+
+  );
+
 }
 
 
-/* POTM */
+/* =========================
+   NAVIGATION
+========================= */
 
-function renderPOTM(){
+function createNav(active){
 
-    const box=document.getElementById("potmList");
+  const items = [
 
-    box.innerHTML="";
+    ["home","Home"],
+    ["matches","Matches"],
+    ["table","Points Table"],
+    ["teams","Teams"],
+    ["stats","Stats"],
+    ["playoffs","Playoffs"]
 
-    potm.forEach(p=>{
+  ];
 
-        box.innerHTML+=`
-        <div class="cap">
 
-            <div>
-                <b>Match ${p.match}</b>
-                <p style="color:#aaa;margin-top:4px;">
-                    ${p.name} (${p.team})
+  $("nav").innerHTML =
+
+    items.map(item => `
+
+      <button
+        class="${active === item[0] ? "active" : ""}"
+        onclick="page('${item[0]}')">
+
+        ${item[1]}
+
+      </button>
+
+    `).join("");
+
+}
+
+
+/* =========================
+   TEAM BADGE
+========================= */
+
+function badge(id){
+
+  return `
+
+    <div class="badge">
+
+      ${id}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   MATCH CARD
+========================= */
+
+function matchCard(m){
+
+  return `
+
+    <div class="card match">
+
+      <div class="matchtop">
+
+        <span>
+          MATCH ${m.no}
+        </span>
+
+        <span class="pill">
+
+          ${
+            m.status === "completed"
+              ? "COMPLETED"
+              : "UPCOMING"
+          }
+
+        </span>
+
+      </div>
+
+
+      <div class="teams">
+
+        <div class="team">
+
+          ${badge(m.a)}
+
+          <div>
+            ${team(m.a).name}
+          </div>
+
+          ${
+            m.winner === m.a
+              ? `<div class="result">
+                   WINNER
+                 </div>`
+              : ""
+          }
+
+        </div>
+
+
+        <b>VS</b>
+
+
+        <div class="team">
+
+          ${badge(m.b)}
+
+          <div>
+            ${team(m.b).name}
+          </div>
+
+          ${
+            m.winner === m.b
+              ? `<div class="result">
+                   WINNER
+                 </div>`
+              : ""
+          }
+
+        </div>
+
+      </div>
+
+
+      ${
+        m.status === "completed"
+
+        ?
+
+        `
+
+          <div class="result">
+            ${m.score}
+          </div>
+
+          <div
+            style="
+              color:#9fb0ca;
+              font-size:11px;
+              margin-top:7px;
+            "
+          >
+
+            ${m.detail || ""}
+
+          </div>
+
+        `
+
+        :
+
+        `
+
+          <div class="upcoming">
+
+            Upcoming fixture
+
+          </div>
+
+        `
+
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   POINTS TABLE
+========================= */
+
+function tableHTML(){
+
+  const table =
+    calculateTable();
+
+
+  return `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th># Team</th>
+
+          <th>Mat</th>
+
+          <th>W</th>
+
+          <th>L</th>
+
+          <th>NRR</th>
+
+          <th>Pts</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        ${
+
+          table.map((x,i) => `
+
+            <tr
+              class="${i < 4 ? "qualified" : ""}"
+            >
+
+              <td>
+
+                <span class="rank">
+
+                  ${i + 1}
+
+                </span>
+
+                &nbsp;
+
+                <b>
+                  ${x.id}
+                </b>
+
+                ${x.name}
+
+              </td>
+
+
+              <td>
+                ${x.p}
+              </td>
+
+
+              <td>
+                ${x.w}
+              </td>
+
+
+              <td>
+                ${x.l}
+              </td>
+
+
+              <td>
+
+                ${
+                  x.nrr === null
+
+                    ? "—"
+
+                    :
+
+                    `${
+                      x.nrr >= 0 ? "+" : ""
+                    }${x.nrr.toFixed(3)}`
+                }
+
+              </td>
+
+
+              <td>
+
+                <b>
+                  ${x.pts}
+                </b>
+
+              </td>
+
+            </tr>
+
+          `).join("")
+
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+/* =========================
+   MAIN PAGE SYSTEM
+========================= */
+
+function page(p){
+
+  createNav(p);
+
+  let html = "";
+
+
+  /* =====================
+     HOME
+  ===================== */
+
+  if(p === "home"){
+
+    const table =
+      calculateTable();
+
+
+    const completed =
+      DATA.matches.filter(
+        m => m.status === "completed"
+      );
+
+
+    const latest =
+      completed.slice(-2).reverse();
+
+
+    html = `
+
+      <section class="hero">
+
+        <div class="eyebrow">
+
+          SEASON 2026 • TOURNAMENT HUB
+
+        </div>
+
+
+        <h2>
+
+          THE ROAD TO THE FINAL
+
+        </h2>
+
+
+        <p>
+
+          Follow every match, result,
+          player leaderboard and playoff
+          race in one place.
+
+        </p>
+
+      </section>
+
+
+      <div class="grid">
+
+        <div class="stat">
+
+          <b>
+            ${DATA.matches.length}
+          </b>
+
+          <span>
+            Total Matches
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <b>
+            ${completed.length}
+          </b>
+
+          <span>
+            Completed
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <b>
+            ${DATA.batting[0]?.runs || 0}
+          </b>
+
+          <span>
+            Highest Runs
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <b>
+            ${DATA.bowling[0]?.wkts || 0}
+          </b>
+
+          <span>
+            Most Wickets
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <section class="section">
+
+        <div class="section-head">
+
+          <h3>
+            Latest Results
+          </h3>
+
+          <small>
+            Match Centre
+          </small>
+
+        </div>
+
+
+        <div class="cards">
+
+          ${
+            latest.length
+
+              ?
+
+              latest.map(matchCard).join("")
+
+              :
+
+              `<div class="empty">
+                No matches played yet.
+              </div>`
+          }
+
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="section-head">
+
+          <h3>
+            Points Table
+          </h3>
+
+          <small>
+            Top 4 qualify
+          </small>
+
+        </div>
+
+
+        ${tableHTML()}
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =====================
+     MATCHES
+  ===================== */
+
+  else if(p === "matches"){
+
+    html = `
+
+      <section
+        class="section"
+        style="margin-top:0"
+      >
+
+        <div class="section-head">
+
+          <h3>
+            Match Centre
+          </h3>
+
+          <small>
+            28 Matches
+          </small>
+
+        </div>
+
+
+        <div class="cards">
+
+          ${
+
+            DATA.matches
+              .map(matchCard)
+              .join("")
+
+          }
+
+        </div>
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =====================
+     POINTS TABLE
+  ===================== */
+
+  else if(p === "table"){
+
+    html = `
+
+      <section
+        class="section"
+        style="margin-top:0"
+      >
+
+        <div class="section-head">
+
+          <h3>
+            Points Table
+          </h3>
+
+          <small>
+            Win = 2 Points
+          </small>
+
+        </div>
+
+
+        ${tableHTML()}
+
+
+        <p
+          style="
+            color:#8095b4;
+            font-size:11px;
+          "
+        >
+
+          NRR appears automatically when
+          innings runs and overs are entered
+          in the tournament data.
+
+        </p>
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =====================
+     TEAMS
+  ===================== */
+
+  else if(p === "teams"){
+
+    html = `
+
+      <section
+        class="section"
+        style="margin-top:0"
+      >
+
+        <div class="section-head">
+
+          <h3>
+            Teams
+          </h3>
+
+          <small>
+            8 Franchises
+          </small>
+
+        </div>
+
+
+        <div class="teamgrid">
+
+          ${
+
+            DATA.teams.map(t => `
+
+              <div class="card teamcard">
+
+                ${badge(t.id)}
+
+
+                <h3>
+                  ${t.name}
+                </h3>
+
+
+                <p>
+                  Captain:
+                  ${t.captain}
                 </p>
-            </div>
 
-            <div>⭐</div>
+              </div>
+
+            `).join("")
+
+          }
 
         </div>
-        `;
-    });
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =====================
+     STATS
+  ===================== */
+
+  else if(p === "stats"){
+
+    const batting =
+      [...DATA.batting]
+        .sort((a,b) => b.runs - a.runs);
+
+
+    const bowling =
+      [...DATA.bowling]
+        .sort((a,b) => b.wkts - a.wkts);
+
+
+    html = `
+
+      <section
+        class="section"
+        style="margin-top:0"
+      >
+
+        <div class="section-head">
+
+          <h3>
+            Orange Cap
+          </h3>
+
+          <small>
+            Most Runs
+          </small>
+
+        </div>
+
+
+        <div class="card">
+
+          ${
+
+            batting.map((x,i) => `
+
+              <div class="playerrow">
+
+                <div>
+
+                  <div class="playername">
+
+                    ${i + 1}.
+                    ${x.name}
+
+                  </div>
+
+
+                  <div class="playerteam">
+
+                    ${x.team}
+                    •
+                    ${team(x.team).name}
+
+                  </div>
+
+                </div>
+
+
+                <div class="number">
+
+                  ${x.runs}
+
+                </div>
+
+              </div>
+
+            `).join("")
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="section-head">
+
+          <h3>
+            Purple Cap
+          </h3>
+
+          <small>
+            Most Wickets
+          </small>
+
+        </div>
+
+
+        <div class="card">
+
+          ${
+
+            bowling.map((x,i) => `
+
+              <div class="playerrow">
+
+                <div>
+
+                  <div class="playername">
+
+                    ${i + 1}.
+                    ${x.name}
+
+                  </div>
+
+
+                  <div class="playerteam">
+
+                    ${x.team}
+                    •
+                    ${team(x.team).name}
+
+                  </div>
+
+                </div>
+
+
+                <div class="number">
+
+                  ${x.wkts}
+
+                </div>
+
+              </div>
+
+            `).join("")
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="section-head">
+
+          <h3>
+            Player of the Match
+          </h3>
+
+        </div>
+
+
+        <div class="card">
+
+          ${
+
+            DATA.potm.map(x => `
+
+              <div class="playerrow">
+
+                <div>
+
+                  <div class="playername">
+
+                    Match ${x.match}
+                    —
+                    ${x.name}
+
+                  </div>
+
+
+                  <div class="playerteam">
+
+                    ${x.team}
+
+                  </div>
+
+                </div>
+
+
+                <div>
+                  ⭐
+                </div>
+
+              </div>
+
+            `).join("")
+
+          }
+
+        </div>
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =====================
+     PLAYOFFS
+  ===================== */
+
+  else if(p === "playoffs"){
+
+    html = `
+
+      <section
+        class="section"
+        style="margin-top:0"
+      >
+
+        <div class="section-head">
+
+          <h3>
+            Playoffs
+          </h3>
+
+          <small>
+            Top 4 Qualify
+          </small>
+
+        </div>
+
+
+        <div class="bracket">
+
+
+          <div class="round">
+
+            <h4>
+              Qualifier 1
+            </h4>
+
+
+            <div class="game">
+
+              <div>
+                1st
+              </div>
+
+              <div>
+                2nd
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="round">
+
+            <h4>
+              Eliminator
+            </h4>
+
+
+            <div class="game">
+
+              <div>
+                3rd
+              </div>
+
+              <div>
+                4th
+              </div>
+
+            </div>
+
+
+            <h4>
+              Qualifier 2
+            </h4>
+
+
+            <div class="game">
+
+              <div>
+                Loser Q1
+              </div>
+
+              <div>
+                Winner Eliminator
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="round">
+
+            <h4>
+              Final
+            </h4>
+
+
+            <div class="game">
+
+              <div>
+                Winner Q1
+              </div>
+
+              <div>
+                Winner Q2
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="round">
+
+            <h4>
+              Champion
+            </h4>
+
+
+            <div
+              class="game"
+              style="
+                text-align:center;
+                font-size:25px;
+              "
+            >
+
+              🏆
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =====================
+     DISPLAY
+  ===================== */
+
+  $("app").innerHTML = html;
+
+  window.scrollTo(0,0);
+
 }
 
 
-/* START */
+/* =========================
+   START WEBSITE
+========================= */
 
-renderMatches();
-renderPoints();
-renderTeams();
-renderOrange();
-renderPurple();
-renderPOTM();
+page("home");
 
-</script></body>
-  </html>
+</script>
+
+</body>
+</html>
